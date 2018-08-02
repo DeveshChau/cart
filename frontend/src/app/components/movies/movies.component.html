@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <div class="card-deck">
+        <div class="card" *ngFor="let movie of movies">
+          <img class="card-img-top" src="{{movie.imagePath}}" alt="Card image cap"  routerLink="/movies/details/{{movie._id}}" >
+          <div class="card-body">
+            <h5 class="card-title">{{movie.title}}</h5>
+            <p class="card-text">{{movie.description}}</p>
+          </div>
+          <div class="card-footer">
+            {{movie.price | currency:'INR'}}
+            <button type="button" class="btn btn-info float-right" (click)="addToCart(movie._id)">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+</div>

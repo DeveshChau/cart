@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+      <h1>{{movie.title}}</h1>
+      <div class="row">
+        <div class="col-md-2">{{movie.duration}} min</div>
+        <div class="col-md-2">{{movie.year}}</div>
+      </div>
+      <div class="row mt-4">
+        {{movie.description}}
+      </div>
+      <table class="table table-borderless ">
+        <tr>
+          <th>Director</th>
+          <td>{{movie.director}}</td>
+        </tr>
+        <tr>
+          <th>Starring</th>
+          <td>{{movie.starring}}</td>
+        </tr>
+        <tr>
+          <th>Genres</th>
+          <td>{{movie.genres}}</td>
+        </tr>
+        <tr>
+          <th>Subtitles</th>
+          <td>{{movie.subtitles}}</td>
+        </tr>
+        <tr>
+          <th>Audio Language</th>
+          <td>{{movie.audioLanguage}}</td>
+        </tr>
+        <tr>
+            <td></td>
+          </tr>
+      </table>
+      <div class="row">
+        <div class="col-md-6">
+            <button type="button" class="btn btn-info" routerLink="/storefront/movies">Back</button>
+            <button type="button" class="btn btn-info float-right">Add To Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <img src="{{movie.imageDetailsPath}}" alt="movie image">
+      <br>
+      <h1 class="mt-2 mx-auto">{{movie.price | currency:'INR'}}</h1>
+    </div>
+  </div>
+</div>
