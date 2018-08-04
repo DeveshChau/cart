@@ -21,7 +21,4 @@ export class MovieService {
     return this.http.get(`${this.uri}`)
   }
 
-  addToCart(id){
-    return this.http.get(`${this.uri}/add-to-cart/${id}`)
-  }
 }

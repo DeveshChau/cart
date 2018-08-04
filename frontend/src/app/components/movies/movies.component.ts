@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../../services/movie/movie.service';
+import { CartService } from '../../services/Cart/cart.service'
 import { Movie } from '../../models/movie.model'
 import { Router } from '@angular/router';
 
@@ -7,14 +8,16 @@ import { Router } from '@angular/router';
   selector: 'app-movies',
   templateUrl: './movies.component.html',
   styleUrls: ['./movies.component.css'],
-  providers:[MovieService]
+  providers:[MovieService,CartService]
 })
-export class MoviesComponent implements OnInit {
+export class MoviesComponent implements OnInit {  
 
   movies: Movie[]
-  cart:any
+  cart
+  length  
 
-  constructor(private movieService: MovieService, private router:Router) { }
+  constructor(private movieService: MovieService, private router:Router,
+  private cartService: CartService) { }
 
   ngOnInit() {
     this.fetchMovies()
@@ -26,18 +29,11 @@ export class MoviesComponent implements OnInit {
     })
   }
 
-  sessionData(){
-    this.movieService.sessionData().subscribe((data)=>{
-     
-     console.log(data);
-      
-    })
-  }
-
-  addToCart(id){
-    this.movieService.addToCart(id).subscribe((data)=>{
-      console.log(data)  
-      this.cart = data
-    })
+  addToCart(movie){
+    this.cart = this.cartService.addToCart(movie)
+    this.length = this.cart.cart.length
+    console.log(this.cart.cart);
+    console.log(this.cart.cart.length);
+    console.log(this.cart.cart[0].title);
   }
 }

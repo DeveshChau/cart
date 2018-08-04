@@ -22,23 +22,13 @@ app.use(session({
     resave:false,
     saveUninitialized:false,
     store: new MongoStore({mongooseConnection: mongoose.connection}),
-    cookie: {maxAge:180*60*1000}
+    cookie: {maxAge:5000}
 }))
 
 app.use(function(req,res,next){
     res.locals.session = req.session
     next()
 })
-
-// router.route('/').get((req,res)=>{
-//     if(req.session.page_views){
-//         req.session.page_views++;
-//         res.send("You visited this page " + req.session.page_views + " times");
-//      } else {
-//         req.session.page_views = 1;
-//         res.send("Welcome to this page for the first time!");
-//      }
-// })
 
 
 router.route('/storefront/movies').get((req,res)=>{
@@ -78,16 +68,11 @@ router.route('/add-to-cart/:id').get((req,res)=>{
             return res.redirect('/')
         }
         cart.add(movie,movie.id)
+        req.session.cart = cart
         res.send(cart)
-        // req.session.cart = cart
-        // res.json({
-        //     movies:req.session.cart.generateArray(),
-        //     totalPrice:req.session.cart.totalPrice,
-        //     totalQuantity: req.session.cart.totalQuantity
-        //  });
     })
 })
 
-app.use('/',router)
+app.use('/',router) 
 app.listen(4000, ()=>{console.log("server running 4000");
 })

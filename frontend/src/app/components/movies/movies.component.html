@@ -1,3 +1,4 @@
+{{length}}
 <div class="container">
   <div class="row mt-4">
     <div class="col-md-12">
@@ -10,7 +11,7 @@
           </div>
           <div class="card-footer">
             {{movie.price | currency:'INR'}}
-            <button type="button" class="btn btn-info float-right" (click)="addToCart(movie._id)">Add To Cart</button>
+            <button type="button" class="btn btn-info float-right" (click)="addToCart(movie)">Add To Cart</button>
           </div>
         </div>
       </div>
