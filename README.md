@@ -5,7 +5,8 @@
 2. node movie-seeder.js
 
 # Run node server with express 
-1. npm run dev
+1. cd backend
+2. npm run dev
 
 # Front end
 1. cd frontend
